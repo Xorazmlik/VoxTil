@@ -210,7 +210,7 @@ class KaraokeController(QObject):
         self._tts_busy = True
         self.pre_listen_busy_changed.emit(True)
         self.status_message.emit("Matn tayyorlanmoqda...")
-        print(f"[LingvaKaraoke] Dastlabki tinglash: sintez boshlandi ({self.tts_mode})")
+        print(f"[VoxTil] Dastlabki tinglash: sintez boshlandi ({self.tts_mode})")
 
         self._synth_worker = self._make_synthesizer(full_text, slow=False)
         self._synth_worker.synthesis_ready.connect(
@@ -300,7 +300,7 @@ class KaraokeController(QObject):
         expected = self.words[self.current_index]
         self.error_counts[self.current_index] += 1
         count = self.error_counts[self.current_index]
-        print(f"[LingvaKaraoke] Xato #{count}/{ERROR_LIMIT}: kutilgan={expected!r}, eshitilgan={last_word(text)!r}")
+        print(f"[VoxTil] Xato #{count}/{ERROR_LIMIT}: kutilgan={expected!r}, eshitilgan={last_word(text)!r}")
         if count >= ERROR_LIMIT:
             self._trigger_help()
         else:
@@ -320,7 +320,7 @@ class KaraokeController(QObject):
 
     def _trigger_help(self):
         if self._tts_busy:
-            print("[LingvaKaraoke] Yordam so'raldi, lekin TTS band - o'tkazib yuborildi")
+            print("[VoxTil] Yordam so'raldi, lekin TTS band - o'tkazib yuborildi")
             return
 
         expected = self.words[self.current_index]
@@ -333,11 +333,11 @@ class KaraokeController(QObject):
 
         pregenerated_path = self._help_audio_files.pop(self.current_index, None)
         if pregenerated_path and os.path.exists(pregenerated_path):
-            print(f"[LingvaKaraoke] Oldindan tayyorlangan audio ishlatildi: {expected!r}")
+            print(f"[VoxTil] Oldindan tayyorlangan audio ishlatildi: {expected!r}")
             self._start_playback(pregenerated_path, "help")
             return
 
-        print(f"[LingvaKaraoke] Oldindan tayyor emas - jonli sintez qilinmoqda ({self.tts_mode}): {expected!r}")
+        print(f"[VoxTil] Oldindan tayyor emas - jonli sintez qilinmoqda ({self.tts_mode}): {expected!r}")
         self._synth_worker = self._make_synthesizer(expected, slow=True)
         self._synth_worker.synthesis_ready.connect(
             lambda path: self._start_playback(path, "help")
@@ -369,7 +369,7 @@ class KaraokeController(QObject):
         # - agar shu vaqt ichida "tugadi" signali kelmasa, majburan tozalaymiz.
         timeout_ms = 20000 if kind == "help" else max(20000, len(self.words) * 1500)
         self._playback_watchdog.start(timeout_ms)
-        print(f"[LingvaKaraoke] Ijro boshlandi ({kind}): {file_path}")
+        print(f"[VoxTil] Ijro boshlandi ({kind}): {file_path}")
 
     def _on_media_status_changed(self, status):
         finished_states = (
@@ -378,20 +378,20 @@ class KaraokeController(QObject):
         )
         if status not in finished_states or self._playback_kind is None:
             return
-        print(f"[LingvaKaraoke] Ijro tugadi, holat: {status}")
+        print(f"[VoxTil] Ijro tugadi, holat: {status}")
         self._finish_playback()
 
     def _on_media_error(self, error, error_string):
         if self._playback_kind is None:
             return
-        print(f"[LingvaKaraoke] Audio ijrosida xato: {error_string}")
+        print(f"[VoxTil] Audio ijrosida xato: {error_string}")
         self.status_message.emit(f"Audio ijrosida xato: {error_string}")
         self._finish_playback()
 
     def _on_playback_timeout(self):
         if self._playback_kind is None:
             return
-        print("[LingvaKaraoke] OGOHLANTIRISH: audio ijrosi kutilgan vaqtda tugamadi, majburan tozalanmoqda")
+        print("[VoxTil] OGOHLANTIRISH: audio ijrosi kutilgan vaqtda tugamadi, majburan tozalanmoqda")
         self.status_message.emit("Audio ijrosida kutilmagan kechikish - davom etilmoqda.")
         self._finish_playback()
 
@@ -499,7 +499,7 @@ class KaraokeController(QObject):
     def _on_pregen_error(self, epoch: int, index: int, message: str):
         if epoch != self._pregen_epoch:
             return
-        print(f"[LingvaKaraoke] So'z #{index} uchun oldindan tayyorlash muvaffaqiyatsiz: {message}")
+        print(f"[VoxTil] So'z #{index} uchun oldindan tayyorlash muvaffaqiyatsiz: {message}")
         if self._pregen_synth is not None:
             self._pregen_synth.wait(1000)
         self._pregen_next(epoch)
@@ -526,7 +526,7 @@ class KaraokeController(QObject):
             # yoqilib qolar edi.
             self.pre_listen_busy_changed.emit(False)
         self.status_message.emit(message)
-        print(f"[LingvaKaraoke] Sintez xatosi: {message}")
+        print(f"[VoxTil] Sintez xatosi: {message}")
         if self.audio_worker:
             self.audio_worker.resume_listening()
 

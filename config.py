@@ -1,5 +1,5 @@
 """
-LingvaKaraoke - Global konfiguratsiya va sozlamalar.
+VoxTil - Global konfiguratsiya va sozlamalar.
 
 Barcha "sehrli sonlar" va sozlanadigan qiymatlar shu faylda to'plangan,
 shunda ularni kodning ichiga kirmasdan osongina o'zgartirish mumkin.

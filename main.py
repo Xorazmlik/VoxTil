@@ -1,5 +1,5 @@
 """
-LingvaKaraoke - dasturni ishga tushirish nuqtasi.
+VoxTil - dasturni ishga tushirish nuqtasi.
 
 Ishga tushirish:
     python main.py
@@ -17,7 +17,7 @@ from ui.theme import build_stylesheet, make_app_icon
 
 def main():
     app = QApplication(sys.argv)
-    app.setApplicationName("LingvaKaraoke")
+    app.setApplicationName("VoxTil")
     app.setStyleSheet(build_stylesheet())
     app.setWindowIcon(make_app_icon())
 

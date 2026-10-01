@@ -1,4 +1,4 @@
-# LingvaKaraoke — 1-bosqich (MVP)
+# VoxTil — 1-bosqich (MVP)
 
 Real vaqtda talaffuzni tinglab, matn bilan solishtiradigan va xato ko'p bo'lsa
 ovozli yordam beradigan desktop mashq dasturi.
@@ -11,24 +11,24 @@ oshiriladi.
 ## Loyiha tuzilmasi
 
 ```
-lingvakaraoke/
+voxtil/
 ├── main.py                 # Ishga tushirish nuqtasi
-├── config.py                # Barcha sozlamalar (threshold, xato limiti, tillar...)
-├── controller.py             # Asosiy mantiq (so'zlar, xatolar, TTS boshqaruvi)
+├── config.py               # Barcha sozlamalar (threshold, xato limiti, tillar...)
+├── controller.py           # Asosiy mantiq (so'zlar, xatolar, TTS boshqaruvi)
 ├── requirements.txt
 ├── ui/
-│   ├── main_window.py        # Oyna: header/body/footer, dialoglar
-│   └── theme.py               # Dizayn tizimi: ranglar, shriftlar, QSS, ikonka
+│   ├── main_window.py      # Oyna: header/body/footer, dialoglar
+│   └── theme.py            # Dizayn tizimi: ranglar, shriftlar, QSS, ikonka
 ├── workers/
-│   ├── audio_worker.py       # Mikrofon + Vosk (STT) — alohida Thread
-│   ├── tts_worker.py         # ONLAYN TTS: edge-tts + ijro — alohida Thread
+│   ├── audio_worker.py     # Mikrofon + Vosk (STT) — alohida Thread
+│   ├── tts_worker.py       # ONLAYN TTS: edge-tts + ijro — alohida Thread
 │   └── offline_tts_worker.py # OFFLINE TTS: espeak-ng — alohida Thread
 ├── utils/
-│   ├── text_processor.py     # Matnni so'zlarga ajratish
-│   ├── matcher.py            # Fuzzy matching (thefuzz)
-│   └── network.py            # Internetni tekshirish
-├── models/                   # Vosk modellari shu yerga joylashtiriladi (bo'sh)
-└── temp_audio/                # Vaqtinchalik TTS audio fayllari (avtomatik)
+│   ├── text_processor.py   # Matnni so'zlarga ajratish
+│   ├── matcher.py          # Fuzzy matching (thefuzz)
+│   └── network.py           # Internetni tekshirish
+├── models/                 # Vosk modellari shu yerga joylashtiriladi (bo'sh)
+└── temp_audio/             # Vaqtinchalik TTS audio fayllari (avtomatik)
 ```
 
 ## 1. O'rnatish
@@ -72,7 +72,7 @@ rejimga qaytish tavsiya etiladi.
 ### 1.3. Python kutubxonalari
 
 ```bash
-cd lingvakaraoke
+cd voxtil
 python -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install -r requirements.txt
@@ -166,7 +166,7 @@ Nutqni aniqlash (Vosk) esa to'liq oflayn ishlaydi.
   ettiradi (soqchi-timer / watchdog).
 - **Jonli status:** endi har bir xato urinishida pastki qatorda
   `"so'z" - xato N/5` ko'rinishida hisoblagich ko'rsatiladi, shunda nechta
-  urinish qolganini aniq ko'rasiz. Terminalda ham `[LingvaKaraoke]` prefiksli
+  urinish qolganini aniq ko'rasiz. Terminalda ham `[VoxTil]` prefiksli
   qatorlar orqali batafsil diagnostika chiqadi — agar yana muammo bo'lsa, shu
   qatorlarni yuboring.
 
@@ -304,8 +304,8 @@ Destroyed while thread is still running" xatosi bilan qulashi mumkin edi
 Endi oyna yopilishida barcha fon Thread'lar xavfsiz tugashini kutadi.
 
 Barcha tuzatishlar real (mock qilinmagan) misollar bilan sinovdan
-o'tkazildi: soxta substring rad etilishi, apostrof variantlari, turkcha
-harf, ravon nutqda so'z birlashishi va TTS ishlab turganda yopish stsenariysi.
+ o'tkazildi: soxta substring rad etilishi, apostrof variantlari, turkcha
+ harf, ravon nutqda so'z birlashishi va TTS ishlab turganda yopish stsenariysi.
 
 ## 12. v2.3 — chuqur testlashda topilgan qo'shimcha nuqsonlar
 

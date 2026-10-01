@@ -11,7 +11,7 @@ oshiriladi.
 ## Loyiha tuzilmasi
 
 ```
-voxtil/
+VoxTil/
 ├── main.py                 # Ishga tushirish nuqtasi
 ├── config.py               # Barcha sozlamalar (threshold, xato limiti, tillar...)
 ├── controller.py           # Asosiy mantiq (so'zlar, xatolar, TTS boshqaruvi)
@@ -72,7 +72,8 @@ rejimga qaytish tavsiya etiladi.
 ### 1.3. Python kutubxonalari
 
 ```bash
-cd voxtil
+git clone https://github.com/Xorazmlik/VoxTil.git
+cd VoxTil
 python -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install -r requirements.txt

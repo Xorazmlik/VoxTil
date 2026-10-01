@@ -1,0 +1,11 @@
+PyQt6>=6.6.0
+PyQt6-Qt6>=6.6.0
+vosk>=0.3.45
+PyAudio>=0.2.14
+edge-tts>=6.1.0
+thefuzz>=0.20.0
+
+# Eslatma: Offline (internetsiz) ovoz rejimi uchun espeak-ng kerak, lekin u
+# pip paketi emas - alohida tizim dasturi sifatida o'rnatiladi:
+#   Linux:   sudo apt install espeak-ng
+#   Windows: https://github.com/espeak-ng/espeak-ng/releases

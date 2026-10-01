@@ -69,7 +69,7 @@ Agar espeak-ng o'rnatilmagan bo'lsa, dastur ishlayveradi - shunchaki
 "Offline" rejimni tanlaganingizda tushunarli xato xabari chiqadi va Onlayn
 rejimga qaytish tavsiya etiladi.
 
-### 1.3. Python kutubxonalari
+### 1.3. Python kutubxonalari va dasturni yuklab olish
 
 ```bash
 git clone https://github.com/Xorazmlik/VoxTil.git

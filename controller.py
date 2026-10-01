@@ -1,5 +1,5 @@
 """
-KaraokeController - UI va Worker Thread'lar orasidagi asosiy mantiqni boshqaradi.
+VoxTilController - UI va Worker Thread'lar orasidagi asosiy mantiqni boshqaradi.
 Bu klass "beynini" tashkil etadi: so'zlar ro'yxati, joriy holat, xatolar
 hisoblagichi va TTS yordamining ishga tushishi shu yerda nazorat qilinadi.
 
@@ -59,7 +59,7 @@ from workers.offline_tts_worker import OfflineTTSSynthesizer
 from workers.tts_worker import TTSSynthesizer
 
 
-class KaraokeController(QObject):
+class VoxTilController(QObject):
     word_status_changed = pyqtSignal(int, str)   # (so'z indeksi, holat: "current"/"done"/"pending")
     status_message = pyqtSignal(str)
     session_finished = pyqtSignal(dict)          # umumiy statistika (SRS 7-band, 7-qadam)

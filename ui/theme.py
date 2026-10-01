@@ -1,5 +1,5 @@
 """
-LingvaKaraoke uchun dizayn tizimi (2-bosqich): ranglar, shriftlar va QSS
+VoxTil uchun dizayn tizimi (2-bosqich): ranglar, shriftlar va QSS
 uslub varag'i. Bu fayl butun dasturning vizual "shaxsiyatini" bir joyda
 saqlaydi, shunda kelajakda uslubni o'zgartirish uchun boshqa fayllarga
 tegish shart bo'lmaydi.

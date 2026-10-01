@@ -1,5 +1,5 @@
 """
-MainWindow - LingvaKaraoke uchun asosiy oyna (SRS 6-band: UI Layout).
+MainWindow - VoxTil uchun asosiy oyna (SRS 6-band: UI Layout).
 
 2-bosqich: professional ko'rinish. Vizual tizim ui/theme.py da saqlanadi;
 bu fayl faqat komponentlar joylashuvi va ularning mantig'i bilan shug'ullanadi.
@@ -26,7 +26,7 @@ from PyQt6.QtWidgets import (
 )
 
 from config import DEFAULT_SPEED_PERCENT, LANGUAGES, MAX_SPEED_PERCENT, MIN_SPEED_PERCENT
-from controller import KaraokeController
+from controller import VoxTilController
 from ui.theme import (
     CURRENT_BG,
     CURRENT_TEXT,
@@ -134,12 +134,12 @@ class ResultsDialog(QDialog):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("LingvaKaraoke")
+        self.setWindowTitle("VoxTil")
         self.setWindowIcon(make_app_icon())
         self.resize(1100, 680)
         self.setMinimumSize(1060, 520)
 
-        self.controller = KaraokeController(self)
+        self.controller = VoxTilController(self)
         self._word_html_states: list[str] = []
 
         self._build_ui()

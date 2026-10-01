@@ -3,7 +3,7 @@ TTSSynthesizer - edge-tts orqali matnni audio faylga aylantiradi (FAQAT
 sintez qiladi, ijro ETMAYDI).
 
 Muhim arxitektura eslatmasi: audio ijrosi (QMediaPlayer) doim asosiy (GUI)
-Thread'da, KaraokeController ichidagi bitta umumiy player orqali amalga
+Thread'da, VoxTilController ichidagi bitta umumiy player orqali amalga
 oshiriladi. Avvalgi versiyada QMediaPlayer har safar shu fon Thread ichida
 yaratilgan edi — bu bir necha marta ketma-ket ishlatilganda beqarorlik va
 "Segmentation fault" ga olib kelgan edi. Shuning uchun bu klass endi faqat
